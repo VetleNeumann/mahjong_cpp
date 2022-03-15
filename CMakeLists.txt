@@ -39,6 +39,14 @@ project(
   HOMEPAGE_URL "https://github.com/cpp-best-practices/cpp_boilerplate_project"
   LANGUAGES CXX C)
 
+add_library(Mahjong INTERFACE)
+target_include_directories(Mahjong
+  INTERFACE 
+    $<INSTALL_INTERFACE:include>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>)
+  #PRIVATE
+    #${CMAKE_CURRENT_SOURCE_DIR}/src)
+
 get_property(BUILDING_MULTI_CONFIG GLOBAL PROPERTY GENERATOR_IS_MULTI_CONFIG)
 if(BUILDING_MULTI_CONFIG)
   if(NOT CMAKE_BUILD_TYPE)
